@@ -31,7 +31,7 @@ app.post('/api/login', async (req, res) => {
 
 
 
-app.post('/api/register', async (req, res) => {
+app.post('https://examples1337.herokuapp.com/api/register', async (req, res) => {
     const { username, password: plainTextPassword } = req.body
 
     if (!username || typeof username !== 'string') {
