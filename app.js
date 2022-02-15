@@ -14,7 +14,7 @@ app.use(bodyParser.json())
 
 
 
-app.post('https://examples1337.herokuapp.com', async (req, res) => {
+app.post('/api/login', async (req, res) => {
     const { username, password } = req.body
     const user = await User.findOne({ username, password }).lean()
 
@@ -31,7 +31,7 @@ app.post('https://examples1337.herokuapp.com', async (req, res) => {
 
 
 
-app.post('https://examples1337.herokuapp.com/', async (req, res) => {
+app.post('/api/register', async (req, res) => {
     const { username, password: plainTextPassword } = req.body
 
     if (!username || typeof username !== 'string') {
@@ -66,7 +66,7 @@ app.post('https://examples1337.herokuapp.com/', async (req, res) => {
 })
 
 
-app.get('https://examples1337.herokuapp.com', (req, res) => {
+app.get('/', (req, res) => {
     res.sendFile(path.resolve(__dirname, 'frontend', 'index.html'))
 })
 
