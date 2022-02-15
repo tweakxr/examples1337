@@ -8,7 +8,7 @@ const PORT = process.env.PORT || 3000
 const md5 = require('md5');
 
 app.use(express.json())
-app.use('/', express.static(path.join(__dirname, 'frontend')))
+app.use('/', express.static(path.join(__dirname, 'client')))
 app.use(bodyParser.json())
 
 
@@ -21,7 +21,7 @@ app.post('/api/login', async (req, res) => {
     if (!user) {
         return res.json({ status: 'error', error: 'Invalid username/password' })
     }
-    if (await (password)) {  //md5.compare этот момент надо решить md5 password compare
+    if (await (password)) {
         return res.json({status: 'Authorization succeeded!'})
 
     }
@@ -31,7 +31,7 @@ app.post('/api/login', async (req, res) => {
 
 
 
-app.post('https://examples1337.herokuapp.com/api/register', async (req, res) => {
+app.post('/api/register', async (req, res) => {
     const { username, password: plainTextPassword } = req.body
 
     if (!username || typeof username !== 'string') {
@@ -67,7 +67,7 @@ app.post('https://examples1337.herokuapp.com/api/register', async (req, res) => 
 
 
 app.get('/', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'frontend', 'index.html'))
+    res.sendFile(path.resolve(__dirname, 'client', 'index.html'))
 })
 
 
