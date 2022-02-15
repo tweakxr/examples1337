@@ -66,7 +66,7 @@ app.post('https://examples1337.herokuapp.com/', async (req, res) => {
 })
 
 
-app.get('/', (req, res) => {
+app.get('https://examples1337.herokuapp.com', (req, res) => {
     res.sendFile(path.resolve(__dirname, 'frontend', 'index.html'))
 })
 
